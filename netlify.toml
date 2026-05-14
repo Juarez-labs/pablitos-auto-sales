@@ -7,12 +7,9 @@
   publish = "."
   command = ""
 
-# Make /admin work without trailing slash
-[[redirects]]
-  from = "/admin"
-  to = "/admin/"
-  status = 301
-  force = true
+# NOTE: Removed an explicit /admin → /admin/ redirect that caused
+# ERR_TOO_MANY_REDIRECTS on Netlify (rule matched both /admin and /admin/
+# under force=true). Netlify serves admin/index.html natively at /admin/.
 
 # Cache static assets aggressively
 [[headers]]
