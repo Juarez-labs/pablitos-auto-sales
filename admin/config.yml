@@ -1,0 +1,120 @@
+# Decap CMS configuration for Pablitos Auto Sales
+# Edit this file ONLY if you know what you're doing.
+# Day-to-day inventory edits happen in the admin UI itself — go to /admin/ on your site.
+
+backend:
+  name: git-gateway        # Auth + commits handled by Netlify (free)
+  branch: main             # Branch to commit edits to
+
+# Where Frank's uploaded photos are stored in the repo
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+# Pretty URLs in the admin UI (optional but nice)
+site_url: https://pablitos-auto-sales.pages.dev
+display_url: https://pablitos-auto-sales.pages.dev
+logo_url: /images/logo.png
+
+# What Frank can edit
+collections:
+
+  - name: "inventory"
+    label: "🚗 Inventory"
+    description: "Add, edit, or remove cars on the lot. Click 'Cars on the Lot' below to edit the list."
+    files:
+      - file: "data/cars.json"
+        label: "Cars on the Lot"
+        name: "cars-file"
+        format: "json"
+        fields:
+
+          - label: "Cars"
+            name: "cars"
+            widget: "list"
+            allow_add: true
+            collapsed: false
+            summary: "{{fields.year}} {{fields.make}} {{fields.model}} — ${{fields.price}}"
+            fields:
+
+              - label: "Year"
+                name: "year"
+                widget: "number"
+                value_type: "int"
+                min: 1990
+                max: 2030
+                hint: "e.g. 2014"
+
+              - label: "Make"
+                name: "make"
+                widget: "select"
+                options:
+                  - { label: "Honda", value: "honda" }
+                  - { label: "Toyota", value: "toyota" }
+                  - { label: "Nissan", value: "nissan" }
+                  - { label: "Other", value: "other" }
+                default: "toyota"
+
+              - label: "Model & Trim"
+                name: "model"
+                widget: "string"
+                hint: "e.g. Camry LE, Civic EX, Altima 2.5 S"
+
+              - label: "Mileage"
+                name: "miles"
+                widget: "number"
+                value_type: "int"
+                min: 0
+                hint: "Just the number, e.g. 162000"
+
+              - label: "Price (cash)"
+                name: "price"
+                widget: "number"
+                value_type: "int"
+                min: 0
+                hint: "Just the number in dollars, e.g. 3800"
+
+              - label: "Price note"
+                name: "price_note"
+                widget: "string"
+                default: "cash"
+                required: false
+                hint: "Optional. e.g. 'cash' or 'or $200/mo'"
+
+              - label: "Transmission"
+                name: "transmission"
+                widget: "select"
+                options: ["Automatic", "Manual"]
+                default: "Automatic"
+
+              - label: "Engine"
+                name: "engine"
+                widget: "string"
+                default: "4-cyl"
+                hint: "e.g. 4-cyl, V6, 7 seats"
+
+              - label: "Photo"
+                name: "image"
+                widget: "image"
+                required: true
+                hint: "Upload a clear photo of the car (3:2 or 4:3 ratio works best)"
+
+              - label: "Feature tags"
+                name: "features"
+                widget: "list"
+                allow_add: true
+                default: ["Clean Title", "Cold A/C", "Reliable"]
+                hint: "Short tags shown on the car card. Keep them to 2-3 words. 'Clean Title' gets a green badge."
+
+              - label: "Top-left tag"
+                name: "tag"
+                widget: "string"
+                default: "Available"
+                hint: "Text shown on the top-left badge. e.g. 'Available', 'Best Value', 'Sold'"
+
+              - label: "Tag style"
+                name: "tag_style"
+                widget: "select"
+                options:
+                  - { label: "Standard (navy)", value: "default" }
+                  - { label: "Deal (yellow)", value: "deal" }
+                default: "default"
