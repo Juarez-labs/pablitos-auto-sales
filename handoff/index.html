@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pablitos Auto Sales — Your Handoff Plan</title>
+<meta name="description" content="Handoff plan for Pablitos Auto Sales website — inventory updates, ownership, and launch checklist." />
+<link rel="icon" type="image/png" href="/images/favicon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --navy: #0B1B3D;
+    --navy-2: #142554;
+    --navy-soft: #5B6B8C;
+    --yellow: #FFD400;
+    --yellow-deep: #F2C300;
+    --bg: #ffffff;
+    --bg-soft: #F4F6FA;
+    --border: #E1E5EE;
+    --green: #1f9d55;
+    --red-soft: #c44a3a;
+    --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    color: var(--navy);
+    background: var(--bg);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--navy); }
+  img { max-width: 100%; display: block; }
+
+  /* ---- TOP BANNER ---- */
+  .banner {
+    background: var(--navy);
+    color: #fff;
+    text-align: center;
+    padding: 12px 24px;
+    font-size: 13px;
+    letter-spacing: 0.02em;
+  }
+  .banner strong { color: var(--yellow); }
+
+  /* ---- HEADER ---- */
+  header {
+    padding: 56px 24px 24px;
+    border-bottom: 1px solid var(--border);
+    text-align: center;
+  }
+  .head-logo {
+    width: 130px; height: 130px; margin: 0 auto 16px;
+    background-image: url('/images/logo-mark.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  .head-eyebrow {
+    display: inline-block;
+    font-size: 12px; font-weight: 700;
+    color: var(--red-soft);
+    letter-spacing: 0.14em; text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  header h1 {
+    font-size: clamp(36px, 5.5vw, 64px);
+    line-height: 1.04;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    max-width: 16ch;
+    margin: 0 auto 16px;
+  }
+  header h1 .accent { color: var(--red-soft); }
+  header p.sub {
+    font-size: 18px;
+    color: var(--navy-soft);
+    max-width: 60ch;
+    margin: 0 auto;
+  }
+
+  /* ---- WRAPPER ---- */
+  main {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ---- SECTION ---- */
+  section {
+    padding: 56px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  section:last-child { border-bottom: none; }
+  .num {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 13px; font-weight: 700;
+    color: var(--red-soft);
+    margin-bottom: 8px;
+    letter-spacing: 0.08em;
+  }
+  section h2 {
+    font-size: clamp(26px, 3vw, 36px);
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    font-weight: 900;
+    margin-bottom: 16px;
+    max-width: 22ch;
+  }
+  section p {
+    font-size: 17px;
+    margin-bottom: 14px;
+    max-width: 62ch;
+  }
+  section p.lead {
+    font-size: 18.5px;
+    color: var(--navy);
+    margin-bottom: 22px;
+  }
+  section p.note {
+    font-size: 14.5px;
+    color: var(--navy-soft);
+    font-style: italic;
+  }
+
+  /* ---- HELLO BLOCK ---- */
+  .hello {
+    background: var(--bg-soft);
+    border-radius: 14px;
+    padding: 32px 32px 28px;
+    margin: 48px 0 0;
+    border-left: 4px solid var(--yellow);
+  }
+  .hello p { max-width: 56ch; }
+  .hello-sig {
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    display: flex; align-items: center; gap: 10px;
+    font-size: 15px;
+  }
+  .hello-sig strong { font-style: italic; }
+
+  /* ---- DISCOUNT BLOCK ---- */
+  .discount {
+    background: var(--navy);
+    color: #fff;
+    border-radius: 18px;
+    padding: 44px 36px;
+    text-align: center;
+    box-shadow: 0 30px 80px rgba(11,27,61,0.25);
+    position: relative;
+    overflow: hidden;
+  }
+  .discount::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(circle at 80% 0%, rgba(255,212,0,0.15) 0%, transparent 50%);
+  }
+  .discount * { position: relative; z-index: 2; }
+  .discount .label {
+    font-family: var(--mono); font-size: 12px; font-weight: 700;
+    color: var(--yellow); letter-spacing: 0.18em; text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .discount h3 {
+    font-size: clamp(20px, 2.6vw, 26px); font-weight: 700;
+    color: #cdd6e4; margin-bottom: 26px;
+    max-width: 24ch; margin-left: auto; margin-right: auto;
+  }
+  .code-pill {
+    display: inline-flex; align-items: center; gap: 14px;
+    background: rgba(255,255,255,0.04);
+    border: 2px dashed var(--yellow);
+    padding: 18px 28px;
+    border-radius: 14px;
+    margin-bottom: 26px;
+  }
+  .code-pill code {
+    font-family: var(--mono); font-size: 36px; font-weight: 700;
+    color: var(--yellow); letter-spacing: 0.04em;
+  }
+  .code-pill .copy-hint {
+    font-size: 11px; color: #8190ad;
+    font-family: var(--mono); letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .discount .strike {
+    text-decoration: line-through;
+    color: #8190ad; font-size: 28px; font-weight: 700;
+    margin-right: 12px;
+  }
+  .discount .free {
+    color: var(--yellow); font-size: 40px; font-weight: 900;
+    letter-spacing: -0.02em;
+  }
+  .discount-cta {
+    display: inline-block;
+    background: var(--yellow); color: var(--navy);
+    padding: 18px 32px; border-radius: 11px;
+    font-weight: 800; font-size: 15.5px;
+    margin-top: 24px;
+    transition: transform 0.15s, box-shadow 0.15s;
+    text-decoration: none;
+  }
+  .discount-cta:hover { transform: translateY(-1px); box-shadow: 0 12px 32px rgba(255,212,0,0.4); }
+  .discount p.tiny {
+    font-size: 12.5px; color: #8190ad;
+    margin-top: 16px; max-width: 48ch;
+    margin-left: auto; margin-right: auto;
+  }
+
+  /* ---- CHECKLIST ---- */
+  ul.check {
+    list-style: none; margin: 18px 0;
+  }
+  ul.check li {
+    padding: 12px 0 12px 32px;
+    position: relative;
+    font-size: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  ul.check li:last-child { border-bottom: none; }
+  ul.check li::before {
+    content: '✓'; position: absolute; left: 4px; top: 11px;
+    color: var(--green); font-weight: 800; font-size: 18px;
+  }
+  ul.check strong { font-weight: 700; }
+
+  /* ---- STEPS ---- */
+  .steps {
+    margin: 20px 0;
+    counter-reset: step;
+  }
+  .step {
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px 24px;
+    margin-bottom: 14px;
+    position: relative;
+    padding-left: 76px;
+  }
+  .step::before {
+    counter-increment: step;
+    content: counter(step);
+    position: absolute;
+    left: 20px; top: 22px;
+    width: 38px; height: 38px;
+    background: var(--navy); color: var(--yellow);
+    border-radius: 50%;
+    display: grid; place-items: center;
+    font-family: var(--mono);
+    font-size: 17px; font-weight: 700;
+  }
+  .step h4 {
+    font-size: 18px; font-weight: 800;
+    margin-bottom: 6px;
+    letter-spacing: -0.015em;
+  }
+  .step p {
+    font-size: 14.5px;
+    color: var(--navy-soft);
+    margin-bottom: 0;
+    max-width: none;
+  }
+  .step .time {
+    display: inline-block;
+    font-family: var(--mono); font-size: 11px;
+    color: var(--red-soft); font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  /* ---- INVENTORY DEMO STRIP ---- */
+  .demo-strip {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 100%);
+    color: #fff;
+    padding: 32px;
+    border-radius: 14px;
+    margin: 24px 0;
+  }
+  .demo-strip h4 {
+    font-size: 18px; font-weight: 800; margin-bottom: 10px;
+    color: var(--yellow);
+  }
+  .demo-strip p { color: #cdd6e4; font-size: 15px; max-width: none; margin-bottom: 0; }
+  .demo-strip code {
+    background: rgba(255,255,255,0.1);
+    padding: 2px 8px; border-radius: 4px;
+    font-family: var(--mono); font-size: 13px;
+    color: var(--yellow);
+  }
+
+  /* ---- ASK TABLE ---- */
+  .ask {
+    display: grid;
+    gap: 12px;
+    margin: 22px 0 6px;
+  }
+  .ask-item {
+    display: grid;
+    grid-template-columns: 38px 1fr;
+    gap: 16px;
+    padding: 18px;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    align-items: start;
+  }
+  .ask-item .icon {
+    width: 38px; height: 38px;
+    background: var(--yellow);
+    border-radius: 8px;
+    display: grid; place-items: center;
+    font-size: 18px;
+  }
+  .ask-item h4 {
+    font-size: 16px; font-weight: 700;
+    margin-bottom: 4px;
+    letter-spacing: -0.015em;
+  }
+  .ask-item p {
+    font-size: 14px; color: var(--navy-soft);
+    margin: 0; max-width: none;
+  }
+
+  /* ---- CONTACT ---- */
+  .contact {
+    background: var(--navy);
+    color: #fff;
+    padding: 48px 36px;
+    border-radius: 18px;
+    text-align: center;
+  }
+  .contact h3 {
+    font-size: 24px; font-weight: 800;
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
+  }
+  .contact p { color: #cdd6e4; font-size: 15.5px; max-width: 48ch; margin: 0 auto 24px; }
+  .contact-btns {
+    display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+  }
+  .contact-btns a {
+    background: var(--yellow); color: var(--navy);
+    padding: 13px 22px; border-radius: 9px;
+    font-weight: 700; font-size: 14.5px;
+    text-decoration: none;
+  }
+  .contact-btns a.outline {
+    background: transparent; color: #fff;
+    border: 2px solid rgba(255,255,255,0.3);
+  }
+
+  /* ---- FOOTER ---- */
+  footer {
+    text-align: center;
+    padding: 36px 24px;
+    color: var(--navy-soft);
+    font-size: 13px;
+  }
+  footer a { color: var(--navy-soft); text-decoration: underline; }
+
+  @media (max-width: 600px) {
+    .code-pill code { font-size: 28px; }
+    .step { padding-left: 64px; }
+    .step::before { left: 14px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="banner">
+  <strong>FOR FRANK</strong> — your private handoff plan from Jose @ Juarez Labs
+</div>
+
+<header>
+  <div class="head-logo"></div>
+  <span class="head-eyebrow">PABLITOS AUTO SALES · YOUR WEBSITE</span>
+  <h1>Welcome aboard, <span class="accent">Frank.</span></h1>
+  <p class="sub">Here&rsquo;s everything you need to take ownership of your new website — your discount code, how to update inventory, and what we need from you to launch.</p>
+</header>
+
+<main>
+
+  <!-- HELLO -->
+  <div class="hello">
+    <p>Hey Frank — quick note before the details. We&rsquo;re going with the <strong>Setup Only</strong> plan, which means you own the website outright and host it yourself. I&rsquo;ll get everything set up for you and walk you through how to update cars, then it&rsquo;s yours to run.</p>
+    <p>Below: your discount code, how inventory updates work, and a 4-step launch plan. Read through it, and message me with any questions.</p>
+    <div class="hello-sig">
+      <span>—</span> <strong>Jose</strong> <span>· Juarez Labs · (818) 984-6382</span>
+    </div>
+  </div>
+
+  <!-- DISCOUNT -->
+  <section>
+    <span class="num">01 / YOUR DISCOUNT</span>
+    <h2>You&rsquo;re getting the site for free.</h2>
+    <p class="lead">As our first paying customer, you get a 100% off founder&rsquo;s discount. The whole Setup Only build is yours at no cost. Use this code at checkout:</p>
+
+    <div class="discount">
+      <div class="label">YOUR PROMO CODE</div>
+      <h3>Enter this code at checkout to take 100% off:</h3>
+      <div class="code-pill">
+        <code>Pablitos</code>
+        <span class="copy-hint">tap to copy ↗</span>
+      </div>
+      <div>
+        <span class="strike">$497</span>
+        <span class="free">$0.00</span>
+      </div>
+      <a href="https://buy.stripe.com/cNi7sM9QY2xLgkdd5w4Rq00" class="discount-cta" target="_blank" rel="noopener noreferrer">Go to checkout →</a>
+      <p class="tiny">One-time use, attached to you. Code is case-insensitive (Pablitos, PABLITOS, pablitos all work). After checkout you&rsquo;ll get an email confirmation and I&rsquo;ll reach out within 24 hours to start the handoff.</p>
+    </div>
+  </section>
+
+  <!-- WHAT YOU GET -->
+  <section>
+    <span class="num">02 / WHAT YOU&rsquo;RE GETTING</span>
+    <h2>The complete website, in your hands.</h2>
+    <ul class="check">
+      <li><strong>The full website</strong> — every page you&rsquo;ve seen, ready to go live</li>
+      <li><strong>All the source files</strong> — code, your logo, all 11 photos, the financing form</li>
+      <li><strong>A GitHub repo</strong> for the code — already created at <em>github.com/Juarez-labs/pablitos-auto-sales</em> (I&rsquo;ll transfer it to you or invite you as owner)</li>
+      <li><strong>The admin editor (Decap CMS)</strong> already built into the site at <code>/admin/</code> so you can update inventory yourself, no coding needed</li>
+      <li><strong>Hosting setup on Netlify</strong> (free) — I&rsquo;ll wire it up so changes go live automatically</li>
+      <li><strong>A 1-hour Zoom walkthrough</strong> showing you how to add a car, change a price, mark one sold, swap a photo</li>
+      <li><strong>30 days of email/text support</strong> after launch — anything breaks, message me</li>
+    </ul>
+  </section>
+
+  <!-- INVENTORY UPDATES -->
+  <section>
+    <span class="num">03 / UPDATING INVENTORY</span>
+    <h2>Add a car in about 90 seconds.</h2>
+    <p class="lead">Every car on the website lives in a single editable list. To add, edit, or remove a car, you log into your admin page — no code, no GitHub, just a form.</p>
+
+    <div class="demo-strip">
+      <h4>Here&rsquo;s the flow:</h4>
+      <p>
+        Go to <code>pablitosautosales.com/admin/</code> →
+        log in with your email →
+        click <strong>Inventory</strong> →
+        click <strong>Add Car</strong> →
+        fill in year, make, model, price, miles, upload a photo →
+        click <strong>Publish</strong>.
+      </p>
+      <p style="margin-top:12px;">Within 60 seconds the new car shows up live on the site.</p>
+    </div>
+
+    <p>To remove a sold car: click it in the list, hit the delete button, publish. Same thing — gone in a minute.</p>
+    <p>To change a price or feature on an existing car: click it, change the field, publish.</p>
+    <p class="note">The admin works on your phone too, so if you snap a photo of a car you just got in, you can post it from the lot.</p>
+  </section>
+
+  <!-- LAUNCH PLAN -->
+  <section>
+    <span class="num">04 / GOING LIVE</span>
+    <h2>4 steps to your site being live.</h2>
+    <p class="lead">After you check out with the <strong>Pablitos</strong> code, I&rsquo;ll handle most of this. You only need to send me 3 things (see next section).</p>
+
+    <div class="steps">
+      <div class="step">
+        <span class="time">DAY 1 · I HANDLE</span>
+        <h4>Connect the repo to Netlify</h4>
+        <p>I&rsquo;ll connect the GitHub repo to Netlify (free hosting), point your new domain at it, and verify the site loads.</p>
+      </div>
+      <div class="step">
+        <span class="time">DAY 1 · I HANDLE</span>
+        <h4>Enable the admin editor</h4>
+        <p>Turn on Netlify Identity (login system) and git-gateway (the bit that lets edits save automatically). Test that everything works.</p>
+      </div>
+      <div class="step">
+        <span class="time">DAY 1 · I HANDLE</span>
+        <h4>Send you a login invite</h4>
+        <p>I&rsquo;ll send an invite to your email. You click the link, set a password, and you&rsquo;re in.</p>
+      </div>
+      <div class="step">
+        <span class="time">DAY 2 · WE DO TOGETHER</span>
+        <h4>30-minute walkthrough on Zoom</h4>
+        <p>I&rsquo;ll show you how to add a car, swap a photo, mark one sold, and answer any questions. After that, it&rsquo;s yours.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT WE NEED -->
+  <section>
+    <span class="num">05 / WHAT WE NEED FROM YOU</span>
+    <h2>Three things, that&rsquo;s it.</h2>
+    <p class="lead">Send these in a text or email after you check out and we&rsquo;ll be live in 48 hours.</p>
+
+    <div class="ask">
+      <div class="ask-item">
+        <div class="icon">🌐</div>
+        <div>
+          <h4>Your preferred domain name</h4>
+          <p>Default suggestion: <strong>pablitosautosales.com</strong> (it&rsquo;s available — about $11/year). If you&rsquo;d rather use something different, let me know. I&rsquo;ll register and configure it for you.</p>
+        </div>
+      </div>
+      <div class="ask-item">
+        <div class="icon">📧</div>
+        <div>
+          <h4>The email you want to log in with</h4>
+          <p>This is the email you&rsquo;ll use to log into the admin page. Most owners use a personal Gmail. I&rsquo;ll send the invite here.</p>
+        </div>
+      </div>
+      <div class="ask-item">
+        <div class="icon">✅</div>
+        <div>
+          <h4>A look at the cars on the site</h4>
+          <p>The 9 cars currently shown are pulled from your Instagram posts. Take a minute to scroll <a href="/#inventory">the inventory</a> and tell me which are still on the lot, which sold, and which we should swap out before launch.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AFTER LAUNCH -->
+  <section>
+    <span class="num">06 / AFTER LAUNCH</span>
+    <h2>You own it. We&rsquo;re here if you need.</h2>
+    <p>Once you&rsquo;re live, the site is 100% yours. The GitHub repo, the domain, the Netlify account — all in your name. Nothing locked behind us. You can switch hosts, hire another developer, or take it offline whenever.</p>
+    <p>For the first 30 days, message me with anything that comes up. Broken image? Want to tweak some copy? Need a hand reorganizing a section? Free fixes during that window.</p>
+    <p>After 30 days, if you ever want help with bigger changes (a new financing partner form, a vehicle detail page, more photos), I charge $50/hour for ad-hoc work. No retainer, no minimums.</p>
+  </section>
+
+  <!-- CONTACT -->
+  <section>
+    <div class="contact">
+      <h3>Questions before you check out?</h3>
+      <p>Text or email me anytime. I&rsquo;m one person, not a call center — your message goes right to me.</p>
+      <div class="contact-btns">
+        <a href="tel:+18189846382">📞 (818) 984-6382</a>
+        <a href="mailto:juarezlabs2026@gmail.com" class="outline">✉️ juarezlabs2026@gmail.com</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  Pablitos Auto Sales handoff plan · prepared by <a href="mailto:juarezlabs2026@gmail.com">Jose @ Juarez Labs</a> · Confidential
+</footer>
+
+<script>
+  // Click-to-copy on the promo code
+  const codeEl = document.querySelector('.code-pill code');
+  const hintEl = document.querySelector('.code-pill .copy-hint');
+  if (codeEl && navigator.clipboard) {
+    document.querySelector('.code-pill').style.cursor = 'pointer';
+    document.querySelector('.code-pill').addEventListener('click', () => {
+      navigator.clipboard.writeText('Pablitos').then(() => {
+        hintEl.textContent = 'copied ✓';
+        hintEl.style.color = '#FFD400';
+        setTimeout(() => {
+          hintEl.textContent = 'tap to copy ↗';
+          hintEl.style.color = '';
+        }, 2000);
+      });
+    });
+  }
+</script>
+
+</body>
+</html>
