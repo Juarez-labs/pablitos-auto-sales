@@ -545,56 +545,6 @@
   }
   .map-wrap iframe { width: 100%; height: 100%; border: none; min-height: 360px; }
 
-  /* ========== PRICING (DEMO CTA) ========== */
-  .pricing {
-    background: var(--navy);
-    color: #fff;
-    padding: 80px 24px;
-    border-top: 4px solid var(--yellow);
-  }
-  .pricing-inner { max-width: 1240px; margin: 0 auto; }
-  .pricing-head { text-align: center; max-width: 700px; margin: 0 auto 48px; }
-  .pricing-head .eyebrow { color: var(--yellow); }
-  .pricing-head h2 { color: #fff; margin: 0 auto; }
-  .pricing-head p { color: #a3afc7; font-size: 17px; margin-top: 14px; }
-  .pricing-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px; max-width: 900px; margin: 0 auto;
-  }
-  @media (max-width: 700px) { .pricing-grid { grid-template-columns: 1fr; } }
-  .price-card {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 16px;
-    padding: 32px 28px;
-    transition: transform 0.18s, border-color 0.18s;
-  }
-  .price-card:hover { transform: translateY(-2px); border-color: var(--yellow); }
-  .price-card.featured { border-color: var(--yellow); background: rgba(255,212,0,0.04); }
-  .price-card-tag { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--yellow); margin-bottom: 10px; }
-  .price-card h3 { font-size: 22px; font-weight: 800; margin-bottom: 8px; letter-spacing: -0.02em; }
-  .price-card p.desc { color: #a3afc7; font-size: 14.5px; margin-bottom: 20px; min-height: 42px; }
-  .price-num { font-size: 38px; font-weight: 900; letter-spacing: -0.03em; }
-  .price-num small { font-size: 15px; font-weight: 500; color: #a3afc7; }
-  .price-list { list-style: none; margin: 22px 0; }
-  .price-list li { font-size: 14px; padding: 6px 0; padding-left: 22px; position: relative; color: #cdd6e4; }
-  .price-list li::before { content: '✓'; position: absolute; left: 0; color: var(--yellow); font-weight: 800; }
-  .price-cta {
-    display: block; text-align: center;
-    background: var(--yellow); color: var(--navy);
-    padding: 14px; border-radius: 10px;
-    font-weight: 800; font-size: 14.5px; letter-spacing: 0.02em;
-    transition: transform 0.15s, box-shadow 0.15s;
-  }
-  .price-cta:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(255,212,0,0.4); }
-  .price-cta.outline {
-    background: transparent; color: #fff;
-    border: 2px solid rgba(255,255,255,0.4);
-  }
-  .price-cta.outline:hover { border-color: var(--yellow); color: var(--yellow); box-shadow: none; }
-  .pricing-foot { text-align: center; font-size: 13.5px; color: #8190ad; margin-top: 28px; }
-
   /* ========== FOOTER ========== */
   footer {
     background: #06122B;
@@ -873,52 +823,6 @@
         </iframe>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- PRICING (DEMO PITCH) -->
-<section class="pricing">
-  <div class="pricing-inner">
-    <div class="pricing-head">
-      <span class="eyebrow">HEY FRANK — A NOTE FROM JOSE</span>
-      <h2>Like this site? It&rsquo;s yours.</h2>
-      <p>I built this for free as a sample of what your shop could look like online. It already uses your real address, your real phone number, your real logo, and the cars you actually have. If you want it live on your own domain — like <strong style="color:#fff;">pablitosautosales.com</strong> — pick a plan below and I&rsquo;ll have it up within 48 hours.</p>
-    </div>
-
-    <div class="pricing-grid">
-      <div class="price-card">
-        <div class="price-card-tag">SETUP ONLY</div>
-        <h3>One-Time Build</h3>
-        <p class="desc">We hand you the keys. You host wherever you want.</p>
-        <div class="price-num">$497<small> one-time</small></div>
-        <ul class="price-list">
-          <li>This site, fully customized to you</li>
-          <li>9 vehicle listings + financing form</li>
-          <li>Mobile + desktop optimized</li>
-          <li>You own the code, hosting wherever</li>
-          <li>30-day support</li>
-        </ul>
-        <a href="https://buy.stripe.com/cNi7sM9QY2xLgkdd5w4Rq00" class="price-cta outline" target="_blank" rel="noopener noreferrer">Get Setup Only — $497</a>
-      </div>
-
-      <div class="price-card featured">
-        <div class="price-card-tag">★ MOST POPULAR</div>
-        <h3>Setup + Hosting</h3>
-        <p class="desc">We build it, host it, update it. You sell cars.</p>
-        <div class="price-num">$797<small> + $39/mo</small></div>
-        <ul class="price-list">
-          <li>Everything in Setup Only</li>
-          <li>Inventory updates whenever you ask</li>
-          <li>Your own domain (pablitosautosales.com)</li>
-          <li>Email forwarding (frank@yourdomain)</li>
-          <li>Hosting + uptime monitoring</li>
-          <li>Cancel anytime</li>
-        </ul>
-        <a href="https://buy.stripe.com/fZu14o0go8W97NH4z04Rq01" class="price-cta" target="_blank" rel="noopener noreferrer">Get Hosted — $797 + $39/mo</a>
-      </div>
-    </div>
-
-    <p class="pricing-foot">Questions? Reply to the email we sent you, or text the number we used to reach out. — Jose</p>
   </div>
 </section>
 
