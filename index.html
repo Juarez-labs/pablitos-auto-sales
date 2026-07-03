@@ -636,9 +636,9 @@
 <!-- TOP BAR -->
 <div class="topbar">
   <div class="topbar-inner">
-    <div>📍 24328 S Vermont Ave, Harbor City, CA 90710</div>
+    <div>📍 <span class="js-address-full">24328 S Vermont Ave, Harbor City, CA 90710</span></div>
     <div>
-      <a href="tel:+13105422302">📞 (310) 542-2302</a>
+      <a href="tel:+13105422302" class="js-phone-link">📞 <span class="js-phone-text">(310) 542-2302</span></a>
       <span class="pipe">|</span>
       <span>Habla Español 🇲🇽</span>
     </div>
@@ -658,7 +658,7 @@
       <a href="#why">Why Us</a>
       <a href="#visit">Visit</a>
     </div>
-    <a href="tel:+13105422302" class="btn-call">📞 (310) 542-2302</a>
+    <a href="tel:+13105422302" class="btn-call js-phone-link">📞 <span class="js-phone-text">(310) 542-2302</span></a>
   </div>
 </nav>
 
@@ -671,7 +671,7 @@
     <p class="lead">Affordable Hondas, Toyotas, and Nissans on Vermont Avenue. Clean titles, straightforward financing, and the kind of service that comes from a small lot that knows your name.</p>
     <div class="hero-ctas">
       <a href="#inventory" class="btn-primary">View Inventory <span class="arrow">→</span></a>
-      <a href="tel:+13105422302" class="btn-secondary">📞 Call Frank</a>
+      <a href="tel:+13105422302" class="btn-secondary js-phone-link">📞 Call Frank</a>
     </div>
   </div>
 </section>
@@ -843,10 +843,10 @@
     <div class="visit-grid">
       <dl class="visit-info">
         <dt>Address</dt>
-        <dd><a href="https://maps.google.com/?q=24328+S+Vermont+Ave+Harbor+City+CA+90710" target="_blank" rel="noopener noreferrer">24328 S Vermont Ave<br/>Harbor City, CA 90710</a></dd>
+        <dd><a href="https://maps.google.com/?q=24328+S+Vermont+Ave+Harbor+City+CA+90710" target="_blank" rel="noopener noreferrer" class="js-maps-link"><span class="js-address-line1">24328 S Vermont Ave</span><br/><span class="js-address-line2">Harbor City, CA 90710</span></a></dd>
 
         <dt>Phone</dt>
-        <dd><a href="tel:+13105422302">(310) 542-2302</a></dd>
+        <dd><a href="tel:+13105422302" class="js-phone-link"><span class="js-phone-text">(310) 542-2302</span></a></dd>
 
         <dt>Ask for</dt>
         <dd>Frank — he handles inventory and financing.</dd>
@@ -868,6 +868,7 @@
       <div class="map-wrap">
         <iframe loading="lazy" allowfullscreen
           referrerpolicy="no-referrer-when-downgrade"
+          class="js-map-iframe"
           src="https://www.google.com/maps?q=24328+S+Vermont+Ave+Harbor+City+CA+90710&output=embed">
         </iframe>
       </div>
@@ -949,9 +950,9 @@
       </div>
       <div class="foot-col">
         <h4>Contact</h4>
-        <a href="tel:+13105422302">(310) 542-2302</a>
-        <a href="https://maps.google.com/?q=24328+S+Vermont+Ave+Harbor+City+CA+90710" target="_blank" rel="noopener noreferrer">24328 S Vermont Ave</a>
-        <a href="mailto:frank@pablitosautosales.com">Email Frank</a>
+        <a href="tel:+13105422302" class="js-phone-link"><span class="js-phone-text">(310) 542-2302</span></a>
+        <a href="https://maps.google.com/?q=24328+S+Vermont+Ave+Harbor+City+CA+90710" target="_blank" rel="noopener noreferrer" class="js-maps-link"><span class="js-address-line1">24328 S Vermont Ave</span></a>
+        <a href="mailto:frank@pablitosautosales.com" class="js-email-link">Email Frank</a>
       </div>
     </div>
     <div class="foot-bottom">
@@ -962,6 +963,56 @@
 </footer>
 
 <script>
+  // ===========================================================
+  // Site settings loader — pulls /data/settings.json (managed via /admin/ → Site Settings)
+  // Controls phone, email, and address everywhere on the page.
+  // ===========================================================
+  let SITE_PHONE = '(310) 542-2302';   // fallback until settings.json loads
+
+  function telHref(phone) {
+    const digits = String(phone).replace(/\D/g, '');
+    // Assume US; prepend +1 if a 10-digit number
+    return 'tel:+' + (digits.length === 10 ? '1' + digits : digits);
+  }
+  function mapsQuery(full) {
+    return encodeURIComponent(full);
+  }
+
+  async function loadSettings() {
+    try {
+      const res = await fetch('data/settings.json', { cache: 'no-store' });
+      if (!res.ok) return; // keep fallback values already in the HTML
+      const s = await res.json();
+
+      const phone = (s.phone || '').trim();
+      const email = (s.email || '').trim();
+      const line1 = (s.address_line1 || '').trim();
+      const line2 = (s.address_line2 || '').trim();
+      const full = [line1, line2].filter(Boolean).join(', ');
+
+      if (phone) {
+        SITE_PHONE = phone;
+        document.querySelectorAll('.js-phone-text').forEach(el => { el.textContent = phone; });
+        document.querySelectorAll('.js-phone-link').forEach(el => { el.setAttribute('href', telHref(phone)); });
+      }
+      if (email) {
+        document.querySelectorAll('.js-email-link').forEach(el => { el.setAttribute('href', 'mailto:' + email); });
+      }
+      if (line1) document.querySelectorAll('.js-address-line1').forEach(el => { el.textContent = line1; });
+      if (line2) document.querySelectorAll('.js-address-line2').forEach(el => { el.textContent = line2; });
+      if (full) {
+        document.querySelectorAll('.js-address-full').forEach(el => { el.textContent = full; });
+        document.querySelectorAll('.js-maps-link').forEach(el => {
+          el.setAttribute('href', 'https://maps.google.com/?q=' + mapsQuery(full));
+        });
+        const iframe = document.querySelector('.js-map-iframe');
+        if (iframe) iframe.setAttribute('src', 'https://www.google.com/maps?q=' + mapsQuery(full) + '&output=embed');
+      }
+    } catch (err) {
+      console.error('Settings load failed; using built-in defaults.', err);
+    }
+  }
+
   // ===========================================================
   // Inventory loader — pulls /data/cars.json (managed via /admin/)
   // ===========================================================
@@ -1037,7 +1088,7 @@
       // Render grid
       const grid = document.getElementById('inv-grid');
       if (cars.length === 0) {
-        grid.innerHTML = '<div style="grid-column:1/-1; text-align:center; color: var(--navy-soft); padding: 40px;">No cars on the lot right now — call Frank at (310) 542-2302 and ask what just came in.</div>';
+        grid.innerHTML = '<div style="grid-column:1/-1; text-align:center; color: var(--navy-soft); padding: 40px;">No cars on the lot right now — call Frank at ' + SITE_PHONE + ' and ask what just came in.</div>';
       } else {
         grid.innerHTML = cars.map(renderCard).join('');
       }
@@ -1057,15 +1108,16 @@
     } catch (err) {
       console.error(err);
       const grid = document.getElementById('inv-grid');
-      if (grid) grid.innerHTML = '<div style="grid-column:1/-1; text-align:center; color: var(--red-soft); padding: 40px;">Couldn&rsquo;t load inventory right now. Please call (310) 542-2302.</div>';
+      if (grid) grid.innerHTML = '<div style="grid-column:1/-1; text-align:center; color: var(--red-soft); padding: 40px;">Couldn&rsquo;t load inventory right now. Please call ' + SITE_PHONE + '.</div>';
     }
   }
 
   // Boot
+  function boot() { loadSettings(); loadInventory(); }
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', loadInventory);
+    document.addEventListener('DOMContentLoaded', boot);
   } else {
-    loadInventory();
+    boot();
   }
 </script>
 

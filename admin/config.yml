@@ -11,8 +11,8 @@ media_folder: "images/uploads"
 public_folder: "/images/uploads"
 
 # Pretty URLs in the admin UI (optional but nice)
-site_url: https://pablitos-auto-sales.pages.dev
-display_url: https://pablitos-auto-sales.pages.dev
+site_url: https://pablitos-auto-sales.netlify.app
+display_url: https://pablitos-auto-sales.netlify.app
 logo_url: /images/logo.png
 
 # What Frank can edit
@@ -118,3 +118,33 @@ collections:
                   - { label: "Standard (navy)", value: "default" }
                   - { label: "Deal (yellow)", value: "deal" }
                 default: "default"
+
+  - name: "settings"
+    label: "⚙️ Site Settings"
+    description: "Your business contact info — shown everywhere on the website. Change it here and it updates across the whole site."
+    files:
+      - file: "data/settings.json"
+        label: "Contact Info"
+        name: "contact"
+        format: "json"
+        fields:
+
+          - label: "Phone number"
+            name: "phone"
+            widget: "string"
+            hint: "How it appears on the site. Example: (310) 542-2302 — the tap-to-call link updates automatically."
+
+          - label: "Email address"
+            name: "email"
+            widget: "string"
+            hint: "Where the 'Email' links point. Example: frank@pablitosautosales.com"
+
+          - label: "Address — line 1 (street)"
+            name: "address_line1"
+            widget: "string"
+            hint: "Street address. Example: 24328 S Vermont Ave"
+
+          - label: "Address — line 2 (city, state, zip)"
+            name: "address_line2"
+            widget: "string"
+            hint: "Example: Harbor City, CA 90710 — the map updates to match automatically."
