@@ -4,31 +4,13 @@
       "engine": "4-cyl",
       "transmission": "Automatic",
       "price_note": "cash",
-      "price": 6700,
-      "model": "Altima 2.5 S",
-      "tag_style": "default",
-      "make": "nissan",
-      "tag": "Available",
-      "image": "/images/altima-2014.jpg",
-      "year": 2014,
-      "features": [
-        "Clean Title",
-        "Backup Camera",
-        "A/C Works"
-      ],
-      "miles": 162000
-    },
-    {
-      "engine": "4-cyl",
-      "transmission": "Automatic",
-      "price_note": "cash",
       "price": 4500,
       "model": "Accord LX",
       "tag_style": "default",
       "make": "honda",
       "tag": "Available",
-      "image": "/images/accord-2010.jpg",
-      "year": 2010,
+      "image": "/images/uploads/sienna-2008.jpg",
+      "year": 2020,
       "features": [
         "Clean Title",
         "Cold A/C",
