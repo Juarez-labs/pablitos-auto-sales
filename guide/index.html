@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Pablitos Auto Sales — How to Update Your Website</title>
+<meta name="description" content="Owner's manual for updating inventory on the Pablitos Auto Sales website. Add cars, change prices, mark sold, swap photos." />
+<meta name="robots" content="noindex" />
+<link rel="icon" type="image/png" href="https://pablitos-auto-sales.netlify.app/images/favicon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --navy: #0B1B3D;
+    --navy-2: #142554;
+    --navy-soft: #5B6B8C;
+    --yellow: #FFD400;
+    --yellow-deep: #F2C300;
+    --bg: #ffffff;
+    --bg-soft: #F4F6FA;
+    --border: #E1E5EE;
+    --green: #1f9d55;
+    --red-soft: #c44a3a;
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    color: var(--navy);
+    background: var(--bg-soft);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .sheet {
+    max-width: 820px;
+    margin: 0 auto;
+    background: #fff;
+    box-shadow: 0 10px 60px rgba(11,27,61,0.08);
+  }
+
+  /* ---- COVER ---- */
+  .cover {
+    background: var(--navy);
+    color: #fff;
+    padding: 56px 48px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::after {
+    content: '';
+    position: absolute; top: -80px; right: -80px;
+    width: 320px; height: 320px;
+    background: radial-gradient(circle, rgba(255,212,0,0.16) 0%, transparent 70%);
+  }
+  .cover-logo {
+    width: 96px; height: 96px;
+    background-image: url('https://pablitos-auto-sales.netlify.app/images/logo-mark.png');
+    background-size: contain; background-repeat: no-repeat; background-position: left center;
+    margin-bottom: 24px;
+    position: relative; z-index: 2;
+  }
+  .cover .kicker {
+    font-family: var(--mono); font-size: 12px; font-weight: 700;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--yellow); margin-bottom: 14px;
+    position: relative; z-index: 2;
+  }
+  .cover h1 {
+    font-size: clamp(32px, 5vw, 52px);
+    line-height: 1.05; letter-spacing: -0.03em; font-weight: 900;
+    max-width: 15ch; margin-bottom: 16px;
+    position: relative; z-index: 2;
+  }
+  .cover h1 .accent { color: var(--yellow); }
+  .cover p {
+    font-size: 18px; color: #cdd6e4; max-width: 52ch;
+    position: relative; z-index: 2;
+  }
+  .cover .madeby {
+    margin-top: 28px; padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.15);
+    font-size: 13.5px; color: #8190ad;
+    position: relative; z-index: 2;
+  }
+
+  /* ---- BODY ---- */
+  .body { padding: 48px; }
+
+  .toc {
+    background: var(--bg-soft);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin-bottom: 44px;
+  }
+  .toc h2 {
+    font-size: 13px; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--red-soft); margin-bottom: 14px;
+  }
+  .toc ol { list-style: none; counter-reset: toc; }
+  .toc li {
+    counter-increment: toc;
+    padding: 7px 0 7px 34px; position: relative;
+    font-size: 15.5px; font-weight: 500;
+    border-bottom: 1px solid var(--border);
+  }
+  .toc li:last-child { border-bottom: none; }
+  .toc li::before {
+    content: counter(toc);
+    position: absolute; left: 0; top: 7px;
+    width: 22px; height: 22px;
+    background: var(--navy); color: var(--yellow);
+    border-radius: 6px; font-family: var(--mono);
+    font-size: 12px; font-weight: 700;
+    display: grid; place-items: center;
+  }
+  .toc a { color: var(--navy); text-decoration: none; }
+  .toc a:hover { color: var(--red-soft); }
+
+  section.chapter {
+    margin-bottom: 48px;
+    scroll-margin-top: 20px;
+  }
+  .chapter-num {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: var(--mono); font-size: 12px; font-weight: 700;
+    color: var(--red-soft); letter-spacing: 0.1em; text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .chapter h2 {
+    font-size: clamp(24px, 3.4vw, 32px); line-height: 1.1;
+    letter-spacing: -0.025em; font-weight: 900; margin-bottom: 16px;
+  }
+  .chapter p { font-size: 16.5px; margin-bottom: 14px; max-width: 62ch; }
+  .chapter p.lead { font-size: 18px; color: var(--navy); }
+
+  /* numbered steps */
+  ol.steps { counter-reset: s; list-style: none; margin: 20px 0; }
+  ol.steps > li {
+    counter-increment: s;
+    position: relative; padding: 0 0 20px 58px;
+    margin-bottom: 4px;
+  }
+  ol.steps > li::before {
+    content: counter(s);
+    position: absolute; left: 0; top: -2px;
+    width: 38px; height: 38px;
+    background: var(--yellow); color: var(--navy);
+    border-radius: 50%; font-weight: 800; font-size: 17px;
+    display: grid; place-items: center;
+  }
+  ol.steps > li::after {
+    content: '';
+    position: absolute; left: 18px; top: 40px; bottom: 0;
+    width: 2px; background: var(--border);
+  }
+  ol.steps > li:last-child::after { display: none; }
+  ol.steps > li strong { font-weight: 700; }
+  ol.steps h4 { font-size: 17px; font-weight: 700; margin-bottom: 4px; }
+  ol.steps p { font-size: 15.5px; margin-bottom: 8px; color: var(--navy-soft); max-width: 58ch; }
+
+  /* field reference table */
+  table.fields {
+    width: 100%; border-collapse: collapse; margin: 20px 0;
+    font-size: 15px;
+  }
+  table.fields th {
+    text-align: left; background: var(--navy); color: #fff;
+    padding: 12px 14px; font-size: 12.5px; font-weight: 700;
+    letter-spacing: 0.06em; text-transform: uppercase;
+  }
+  table.fields th:first-child { border-radius: 8px 0 0 0; }
+  table.fields th:last-child { border-radius: 0 8px 0 0; }
+  table.fields td {
+    padding: 12px 14px; border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  table.fields tr:nth-child(even) td { background: var(--bg-soft); }
+  table.fields td:first-child { font-weight: 700; white-space: nowrap; }
+  table.fields td code {
+    font-family: var(--mono); font-size: 13px;
+    background: #fff; border: 1px solid var(--border);
+    padding: 1px 6px; border-radius: 4px; color: var(--red-soft);
+  }
+
+  /* callout boxes */
+  .callout {
+    border-radius: 12px; padding: 20px 24px; margin: 20px 0;
+    font-size: 15.5px;
+  }
+  .callout.tip { background: #eef7f1; border-left: 4px solid var(--green); }
+  .callout.warn { background: #fdf4e7; border-left: 4px solid var(--yellow-deep); }
+  .callout.info { background: var(--bg-soft); border-left: 4px solid var(--navy); }
+  .callout strong { font-weight: 700; }
+  .callout .ctitle {
+    display: block; font-weight: 800; margin-bottom: 4px; font-size: 15px;
+  }
+
+  kbd {
+    font-family: var(--mono); font-size: 13px;
+    background: var(--navy); color: #fff;
+    padding: 2px 8px; border-radius: 5px; font-weight: 600;
+  }
+  .pill {
+    display: inline-block; font-family: var(--mono); font-size: 13.5px;
+    background: var(--bg-soft); border: 1px solid var(--border);
+    padding: 2px 8px; border-radius: 5px; color: var(--navy);
+  }
+
+  /* FAQ */
+  .faq-item {
+    border-bottom: 1px solid var(--border);
+    padding: 18px 0;
+  }
+  .faq-item:last-child { border-bottom: none; }
+  .faq-q { font-size: 16.5px; font-weight: 700; margin-bottom: 6px; }
+  .faq-q::before { content: 'Q. '; color: var(--red-soft); }
+  .faq-a { font-size: 15.5px; color: var(--navy-soft); max-width: 60ch; }
+
+  /* contact footer */
+  .help {
+    background: var(--navy); color: #fff;
+    border-radius: 14px; padding: 32px 36px; margin-top: 40px;
+    text-align: center;
+  }
+  .help h3 { font-size: 22px; font-weight: 800; margin-bottom: 8px; }
+  .help p { color: #cdd6e4; font-size: 15.5px; margin-bottom: 18px; max-width: 46ch; margin-left: auto; margin-right: auto; }
+  .help a {
+    display: inline-block; background: var(--yellow); color: var(--navy);
+    padding: 12px 24px; border-radius: 9px; font-weight: 800;
+    font-size: 15px; text-decoration: none; margin: 4px;
+  }
+  .help a.outline { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.3); }
+
+  footer.doc-foot {
+    text-align: center; padding: 28px; color: var(--navy-soft); font-size: 13px;
+  }
+
+  /* print */
+  @media print {
+    body { background: #fff; }
+    .sheet { box-shadow: none; max-width: 100%; }
+    .cover { padding: 40px; }
+    .no-print { display: none !important; }
+    section.chapter { break-inside: avoid; }
+    ol.steps > li { break-inside: avoid; }
+    .help { break-inside: avoid; }
+    a { color: var(--navy); text-decoration: none; }
+  }
+
+  @media (max-width: 640px) {
+    .cover, .body { padding: 32px 22px; }
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <!-- COVER -->
+  <div class="cover">
+    <div class="cover-logo"></div>
+    <div class="kicker">Owner&rsquo;s Manual</div>
+    <h1>How to update <span class="accent">your website.</span></h1>
+    <p>Everything you need to keep your inventory fresh — adding cars, changing prices, marking one sold, and swapping photos. No tech experience needed.</p>
+    <div class="madeby">Pablitos Auto Sales &middot; Harbor City, CA &middot; prepared for Frank by Jose @ Juarez Labs</div>
+  </div>
+
+  <div class="body">
+
+    <!-- TOC -->
+    <nav class="toc">
+      <h2>What&rsquo;s inside</h2>
+      <ol>
+        <li><a href="#login">Logging in to your dashboard</a></li>
+        <li><a href="#layout">What you&rsquo;re looking at</a></li>
+        <li><a href="#add">Adding a car</a></li>
+        <li><a href="#edit">Changing a price or detail</a></li>
+        <li><a href="#sold">Marking a car sold (or removing it)</a></li>
+        <li><a href="#photos">Swapping or adding photos</a></li>
+        <li><a href="#phototips">Photo tips that sell cars</a></li>
+        <li><a href="#phone">Doing it all from your phone</a></li>
+        <li><a href="#faq">Common questions</a></li>
+      </ol>
+    </nav>
+
+    <!-- 1 LOGIN -->
+    <section class="chapter" id="login">
+      <div class="chapter-num">Chapter 1</div>
+      <h2>Logging in to your dashboard</h2>
+      <p class="lead">Your website has a private back office where you control everything customers see. You get to it by adding <span class="pill">/admin/</span> to the end of your website address.</p>
+      <ol class="steps">
+        <li>
+          <h4>Open your admin page</h4>
+          <p>In any web browser (phone or computer), go to:</p>
+          <p><strong>pablitos-auto-sales.netlify.app/admin/</strong></p>
+          <p>Once your custom domain finishes connecting, this becomes <strong>pablitosautosales.com/admin/</strong> — same login, prettier address. We&rsquo;ll tell you when it&rsquo;s ready.</p>
+        </li>
+        <li>
+          <h4>Log in</h4>
+          <p>Click <strong>&ldquo;Login with Netlify Identity&rdquo;</strong>, then enter the email and password you set up when you accepted your invitation.</p>
+        </li>
+        <li>
+          <h4>You&rsquo;re in</h4>
+          <p>You&rsquo;ll land in your content editor. This is home base for everything in this guide.</p>
+        </li>
+      </ol>
+      <div class="callout tip">
+        <span class="ctitle">Bookmark it</span>
+        Save the admin page to your phone&rsquo;s home screen or browser favorites so you can get to it in one tap whenever a new car rolls in.
+      </div>
+    </section>
+
+    <!-- 2 LAYOUT -->
+    <section class="chapter" id="layout">
+      <div class="chapter-num">Chapter 2</div>
+      <h2>What you&rsquo;re looking at</h2>
+      <p>After you log in, you&rsquo;ll see a simple editor. On the left is a section called <strong>🚗 Inventory</strong>. That&rsquo;s the only thing you need.</p>
+      <ol class="steps">
+        <li>
+          <h4>Click &ldquo;Inventory&rdquo;</h4>
+          <p>Then click <strong>&ldquo;Cars on the Lot&rdquo;</strong>.</p>
+        </li>
+        <li>
+          <h4>You&rsquo;ll see your car list</h4>
+          <p>Every car currently on your website shows up here as a row. Click any row to open it and see its details.</p>
+        </li>
+      </ol>
+      <div class="callout info">
+        <span class="ctitle">The golden rule</span>
+        Nothing you do here goes live until you click the green <strong>&ldquo;Publish&rdquo;</strong> button in the top-right corner. Until you publish, you&rsquo;re just working on a draft — so feel free to poke around.
+      </div>
+    </section>
+
+    <!-- 3 ADD -->
+    <section class="chapter" id="add">
+      <div class="chapter-num">Chapter 3</div>
+      <h2>Adding a car</h2>
+      <p class="lead">This is the one you&rsquo;ll do most. Start to finish, it takes about 90 seconds.</p>
+      <ol class="steps">
+        <li>
+          <h4>Open your car list</h4>
+          <p>Inventory → Cars on the Lot.</p>
+        </li>
+        <li>
+          <h4>Click &ldquo;Add Cars&rdquo;</h4>
+          <p>Look for the button to add a new item to the list. A blank form opens up.</p>
+        </li>
+        <li>
+          <h4>Fill in the details</h4>
+          <p>Go field by field. Here&rsquo;s exactly what each one means:</p>
+        </li>
+      </ol>
+
+      <table class="fields">
+        <thead>
+          <tr><th>Field</th><th>What to put</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Year</td><td>The model year. Example: <code>2012</code></td></tr>
+          <tr><td>Make</td><td>Pick from the dropdown: Honda, Toyota, Nissan, or Other.</td></tr>
+          <tr><td>Model &amp; Trim</td><td>Example: <code>Camry LE</code>, <code>Civic EX</code>, <code>Altima 2.5 S</code></td></tr>
+          <tr><td>Mileage</td><td>Just the number, no commas. Example: <code>145000</code></td></tr>
+          <tr><td>Price</td><td>Just the dollar number, no commas or dollar sign. Example: <code>3800</code></td></tr>
+          <tr><td>Price note</td><td>Optional. Example: <code>cash</code> or <code>or $200/mo</code>. Leave as &ldquo;cash&rdquo; if unsure.</td></tr>
+          <tr><td>Transmission</td><td>Automatic or Manual.</td></tr>
+          <tr><td>Engine</td><td>Example: <code>4-cyl</code>, <code>V6</code>, or <code>7 seats</code> for a van.</td></tr>
+          <tr><td>Photo</td><td>Click to upload a picture from your phone or computer. (See Chapter 7 for photo tips.)</td></tr>
+          <tr><td>Feature tags</td><td>Short badges shown on the car. Keep them 2&ndash;3 words: <code>Clean Title</code>, <code>Cold A/C</code>, <code>Backup Camera</code>. &ldquo;Clean Title&rdquo; gets a green badge automatically.</td></tr>
+          <tr><td>Top-left tag</td><td>The badge on the corner of the photo. Example: <code>Available</code>, <code>Best Value</code>, <code>Just In</code>.</td></tr>
+          <tr><td>Tag style</td><td>&ldquo;Standard&rdquo; for a navy badge, &ldquo;Deal&rdquo; for a bright yellow one that pops.</td></tr>
+        </tbody>
+      </table>
+
+      <ol class="steps" start="4" style="counter-reset: s 3;">
+        <li>
+          <h4>Click &ldquo;Publish&rdquo;</h4>
+          <p>Green button, top-right. Choose &ldquo;Publish now&rdquo; if it asks.</p>
+        </li>
+        <li>
+          <h4>Check your work</h4>
+          <p>Wait about a minute, then open your website and refresh. Your new car is live for the whole world to see.</p>
+        </li>
+      </ol>
+
+      <div class="callout warn">
+        <span class="ctitle">Give it a minute</span>
+        After you publish, your website takes about <strong>60 seconds</strong> to update. If you don&rsquo;t see the change right away, wait a moment and refresh the page. That&rsquo;s normal.
+      </div>
+    </section>
+
+    <!-- 4 EDIT -->
+    <section class="chapter" id="edit">
+      <div class="chapter-num">Chapter 4</div>
+      <h2>Changing a price or detail</h2>
+      <p>Dropped the price? Fixed a typo? Same easy flow.</p>
+      <ol class="steps">
+        <li><h4>Open the car</h4><p>Inventory → Cars on the Lot → click the car you want to change.</p></li>
+        <li><h4>Change the field</h4><p>Update the price, mileage, features — whatever needs fixing.</p></li>
+        <li><h4>Publish</h4><p>Green button, top-right. Wait a minute, refresh your site, done.</p></li>
+      </ol>
+    </section>
+
+    <!-- 5 SOLD -->
+    <section class="chapter" id="sold">
+      <div class="chapter-num">Chapter 5</div>
+      <h2>Marking a car sold (or removing it)</h2>
+      <p>When a car sells, you&rsquo;ve got two choices. Both are fine — it&rsquo;s your preference.</p>
+
+      <p><strong>Option A — Show it as SOLD</strong> (proves you move cars):</p>
+      <ol class="steps">
+        <li><h4>Open the car</h4><p>Click it in your list.</p></li>
+        <li><h4>Change the Top-left tag</h4><p>Type <span class="pill">Sold</span> in the &ldquo;Top-left tag&rdquo; field.</p></li>
+        <li><h4>Change the Tag style to &ldquo;Deal&rdquo;</h4><p>This makes the SOLD badge bright yellow so it stands out.</p></li>
+        <li><h4>Publish</h4><p>Done.</p></li>
+      </ol>
+
+      <p style="margin-top:24px;"><strong>Option B — Remove it completely:</strong></p>
+      <ol class="steps">
+        <li><h4>Open the car</h4><p>Click it in your list.</p></li>
+        <li><h4>Delete it</h4><p>Look for the trash / delete button on that car&rsquo;s entry.</p></li>
+        <li><h4>Publish</h4><p>The car disappears from your website in about a minute.</p></li>
+      </ol>
+
+      <div class="callout tip">
+        <span class="ctitle">Deleted the wrong one?</span>
+        Don&rsquo;t worry — nothing is ever truly lost. Text Jose and it can be brought right back.
+      </div>
+    </section>
+
+    <!-- 6 PHOTOS -->
+    <section class="chapter" id="photos">
+      <div class="chapter-num">Chapter 6</div>
+      <h2>Swapping or adding photos</h2>
+      <p>Got a better shot of a car? Replace it anytime.</p>
+      <ol class="steps">
+        <li><h4>Open the car</h4><p>Click it in your list.</p></li>
+        <li><h4>Find the Photo field</h4><p>Click the current photo, then choose &ldquo;Replace&rdquo; or the upload button.</p></li>
+        <li><h4>Upload the new photo</h4><p>Pick it from your phone or computer. It uploads right there.</p></li>
+        <li><h4>Publish</h4><p>New photo goes live in about a minute.</p></li>
+      </ol>
+    </section>
+
+    <!-- 7 PHOTO TIPS -->
+    <section class="chapter" id="phototips">
+      <div class="chapter-num">Chapter 7</div>
+      <h2>Photo tips that sell cars</h2>
+      <p>You don&rsquo;t need a fancy camera — your phone is perfect. A few habits make your cars look their best:</p>
+      <ol class="steps">
+        <li><h4>Shoot in daylight</h4><p>A cloudy day is actually ideal — no harsh shadows or glare on the paint.</p></li>
+        <li><h4>Three-quarter front angle</h4><p>Stand at the front corner of the car, not straight on. Turn the wheels slightly toward you. This is the classic &ldquo;hero&rdquo; shot.</p></li>
+        <li><h4>Get the whole car in frame</h4><p>Don&rsquo;t cut off the roof or wheels. Leave a little room around the edges.</p></li>
+        <li><h4>Clean background helps</h4><p>Pull the car to an open part of the lot if you can. Less clutter = more professional.</p></li>
+        <li><h4>Skip the filters</h4><p>Your website already has its own polished look. Just upload the natural photo.</p></li>
+      </ol>
+    </section>
+
+    <!-- 8 PHONE -->
+    <section class="chapter" id="phone">
+      <div class="chapter-num">Chapter 8</div>
+      <h2>Doing it all from your phone</h2>
+      <p class="lead">Everything in this guide works from your phone&rsquo;s browser — so you can post a car straight from the lot.</p>
+      <ol class="steps">
+        <li><h4>A car just came in?</h4><p>Snap a few photos on your phone right there.</p></li>
+        <li><h4>Open your admin page</h4><p>Tap your bookmark to <span class="pill">/admin/</span> and log in.</p></li>
+        <li><h4>Add the car</h4><p>Same steps as Chapter 3 — the photo upload pulls straight from your camera roll.</p></li>
+        <li><h4>Publish</h4><p>The car is on your website before you&rsquo;ve walked back inside.</p></li>
+      </ol>
+    </section>
+
+    <!-- 9 FAQ -->
+    <section class="chapter" id="faq">
+      <div class="chapter-num">Chapter 9</div>
+      <h2>Common questions</h2>
+      <div class="faq-item">
+        <div class="faq-q">I published a typo. How do I fix it?</div>
+        <div class="faq-a">Open the car again, fix the field, hit Publish. Takes 30 seconds. You can edit as many times as you want.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Why doesn&rsquo;t my change show up right away?</div>
+        <div class="faq-a">Your website rebuilds each time you publish. Give it about 60 seconds, then refresh the page. This is normal and keeps the site fast for customers.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Can someone else help me update it?</div>
+        <div class="faq-a">Yes. We can add up to 5 people with their own logins — a family member or employee. Just tell Jose their email and he&rsquo;ll send an invite.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">I forgot my password.</div>
+        <div class="faq-a">On the login screen, click &ldquo;Forgot password&rdquo; and follow the email. Or text Jose and he&rsquo;ll send a fresh invite.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Will I break something?</div>
+        <div class="faq-a">No. You can only edit the car list — the rest of the site is locked. And nothing is permanent: every version is saved, so anything can be undone.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">How many cars can I put up?</div>
+        <div class="faq-a">As many as you want. Add them the same way each time.</div>
+      </div>
+    </section>
+
+    <!-- HELP -->
+    <div class="help">
+      <h3>Stuck on anything?</h3>
+      <p>You&rsquo;ve got 30 days of free support, and I&rsquo;m one text away after that. Real person, not a call center.</p>
+      <a href="tel:+18189846382">📞 Call/Text Jose &middot; (818) 984-6382</a>
+      <a href="mailto:juarezlabs2026@gmail.com" class="outline">✉️ Email Jose</a>
+    </div>
+
+  </div>
+
+  <footer class="doc-foot">
+    Pablitos Auto Sales &middot; Website Owner&rsquo;s Manual &middot; Keep this handy
+  </footer>
+
+</div>
+</body>
+</html>
