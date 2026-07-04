@@ -4,145 +4,17 @@
       "engine": "4-cyl",
       "transmission": "Automatic",
       "price_note": "cash",
-      "price": 4500,
-      "model": "Accord LX",
+      "price": 12750,
+      "model": "Canyon ",
       "tag_style": "default",
-      "make": "honda",
+      "make": "other",
       "tag": "Available",
-      "image": "/images/uploads/sienna-2008.jpg",
-      "year": 2020,
+      "image": "/images/uploads/img_8414.jpeg",
+      "year": 2015,
       "features": [
-        "Clean Title",
-        "Cold A/C",
-        "Cloth Interior"
+        "backupcamera"
       ],
-      "miles": 145000
-    },
-    {
-      "engine": "7 seats",
-      "transmission": "Automatic",
-      "price_note": "or $200/mo",
-      "price": 4200,
-      "model": "Sienna CE",
-      "tag_style": "deal",
-      "make": "toyota",
-      "tag": "Family Lease",
-      "image": "/images/sienna-2008.jpg",
-      "year": 2008,
-      "features": [
-        "Clean Title",
-        "Sliding Doors",
-        "Lease Available"
-      ],
-      "miles": 158000
-    },
-    {
-      "engine": "4-cyl",
-      "transmission": "Automatic",
-      "price_note": "cash",
-      "price": 3250,
-      "model": "Camry XLE",
-      "tag_style": "default",
-      "make": "toyota",
-      "tag": "Available",
-      "image": "/images/camry-2002.jpg",
-      "year": 2002,
-      "features": [
-        "Clean Title",
-        "Alloy Wheels",
-        "Leather"
-      ],
-      "miles": 173000
-    },
-    {
-      "engine": "4-cyl",
-      "transmission": "Automatic",
-      "price_note": "cash",
-      "price": 3300,
-      "model": "Camry LE",
-      "tag_style": "default",
-      "make": "toyota",
-      "tag": "Available",
-      "image": "/images/camry-2005.jpg",
-      "year": 2005,
-      "features": [
-        "Clean Title",
-        "Cold A/C",
-        "Minor Cosmetic"
-      ],
-      "miles": 147000
-    },
-    {
-      "engine": "4-cyl",
-      "transmission": "Automatic",
-      "price_note": "cash",
-      "price": 3000,
-      "model": "Civic LX",
-      "tag_style": "deal",
-      "make": "honda",
-      "tag": "Best Value",
-      "image": "/images/civic-2004.jpg",
-      "year": 2004,
-      "features": [
-        "Clean Title",
-        "No Issues",
-        "Fuel Saver"
-      ],
-      "miles": 167000
-    },
-    {
-      "engine": "4-cyl",
-      "transmission": "Automatic",
-      "price_note": "cash",
-      "price": 3400,
-      "model": "Sentra 2.0 S",
-      "tag_style": "default",
-      "make": "nissan",
-      "tag": "Available",
-      "image": "/images/sentra-2008.jpg",
-      "year": 2008,
-      "features": [
-        "Clean Title",
-        "Cold A/C",
-        "Compact"
-      ],
-      "miles": 138000
-    },
-    {
-      "engine": "4-cyl",
-      "transmission": "Automatic",
-      "price_note": "cash",
-      "price": 2900,
-      "model": "Civic LX",
-      "tag_style": "default",
-      "make": "honda",
-      "tag": "Available",
-      "image": "/images/civic-2001.jpg",
-      "year": 2001,
-      "features": [
-        "Clean Title",
-        "Save Gas",
-        "Reliable"
-      ],
-      "miles": 175000
-    },
-    {
-      "engine": "4-cyl",
-      "transmission": "Automatic",
-      "price_note": "cash",
-      "price": 2800,
-      "model": "Corolla CE",
-      "tag_style": "deal",
-      "make": "toyota",
-      "tag": "Best Value",
-      "image": "/images/corolla-2001.jpg",
-      "year": 2001,
-      "features": [
-        "Clean Title",
-        "35+ MPG",
-        "Built to Last"
-      ],
-      "miles": 135000
+      "miles": 115000
     }
   ]
 }
