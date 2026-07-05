@@ -15,6 +15,24 @@
         "backupcamera"
       ],
       "miles": 115000
+    },
+    {
+      "engine": "4-cyl",
+      "transmission": "Automatic",
+      "price_note": "$7,750",
+      "price": 7750,
+      "model": "Corolla Le",
+      "tag_style": "default",
+      "make": "toyota",
+      "tag": "Available",
+      "image": "/images/uploads/img_8396.jpeg",
+      "year": 2012,
+      "features": [
+        "Clean Title",
+        "Cold A/C",
+        "Reliable"
+      ],
+      "miles": 139499
     }
   ]
 }
