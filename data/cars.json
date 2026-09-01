@@ -20,6 +20,27 @@
         "Tow package"
       ],
       "miles": 145589
+    },
+    {
+      "engine": "4-cyl",
+      "transmission": "Automatic",
+      "price_note": "cash",
+      "price": 10800,
+      "model": "GMC Acadia Slt ",
+      "tag_style": "default",
+      "make": "other",
+      "tag": "Available front wheel drive v6",
+      "image": "/images/uploads/img_8918.jpeg",
+      "year": 2017,
+      "features": [
+        "Clean Title",
+        "Cold A/C",
+        "leather interior",
+        "3 row seats",
+        "bluetooth",
+        ""
+      ],
+      "miles": 103350
     }
   ]
 }
