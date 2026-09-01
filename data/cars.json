@@ -1,38 +1,25 @@
 {
   "cars": [
     {
-      "engine": "4-cyl",
+      "engine": "6-cyl",
       "transmission": "Automatic",
       "price_note": "cash",
-      "price": 12750,
-      "model": "Canyon ",
+      "price": 11500,
+      "model": "Chevrolet Traverse High Country",
       "tag_style": "default",
       "make": "other",
-      "tag": "Available",
-      "image": "/images/uploads/img_8414.jpeg",
-      "year": 2015,
-      "features": [
-        "backupcamera"
-      ],
-      "miles": 115000
-    },
-    {
-      "engine": "4-cyl",
-      "transmission": "Automatic",
-      "price_note": "$7,750",
-      "price": 7750,
-      "model": "Corolla Le",
-      "tag_style": "default",
-      "make": "toyota",
-      "tag": "Available",
-      "image": "/images/uploads/img_8396.jpeg",
-      "year": 2012,
+      "tag": "v6",
+      "image": "/images/uploads/img_8935.jpeg",
+      "year": 2018,
       "features": [
         "Clean Title",
         "Cold A/C",
-        "Reliable"
+        "Reliable",
+        "panoramic sunroof",
+        "All Wheel Drive",
+        "Tow package"
       ],
-      "miles": 139499
+      "miles": 145589
     }
   ]
 }
