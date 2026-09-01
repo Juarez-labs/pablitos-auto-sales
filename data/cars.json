@@ -41,6 +41,25 @@
         ""
       ],
       "miles": 103350
+    },
+    {
+      "engine": "v6",
+      "transmission": "Automatic",
+      "price_note": "cash",
+      "price": 13789,
+      "model": "Chevy Colorado z71",
+      "tag_style": "default",
+      "make": "other",
+      "tag": "Available",
+      "image": "/images/uploads/img_9038.jpeg",
+      "year": 2016,
+      "features": [
+        "Clean Title",
+        "Cold A/C",
+        "rear wheel drive",
+        "leather interior"
+      ],
+      "miles": 138560
     }
   ]
 }
