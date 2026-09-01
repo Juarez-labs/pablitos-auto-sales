@@ -22,14 +22,14 @@
       "miles": 145589
     },
     {
-      "engine": "4-cyl",
+      "engine": "v6",
       "transmission": "Automatic",
       "price_note": "cash",
       "price": 10800,
       "model": "GMC Acadia Slt ",
       "tag_style": "default",
       "make": "other",
-      "tag": "Available front wheel drive v6",
+      "tag": "front wheel drive",
       "image": "/images/uploads/img_8918.jpeg",
       "year": 2017,
       "features": [
@@ -46,7 +46,7 @@
       "engine": "v6",
       "transmission": "Automatic",
       "price_note": "cash",
-      "price": 13789,
+      "price": 13800,
       "model": "Chevy Colorado z71",
       "tag_style": "default",
       "make": "other",
